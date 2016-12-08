@@ -61,3 +61,9 @@ void BST::insert(const int & item)
 	else
 		cout << "Item already in the tree\n";
 }
+
+//Definition of deleteNode()
+void BST::deleteNode(const int & item) const
+{
+
+}

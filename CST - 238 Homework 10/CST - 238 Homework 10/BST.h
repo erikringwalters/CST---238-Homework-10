@@ -13,7 +13,7 @@ public:
 	bool empty() const;
 	bool search(const int & item) const;
 	void insert(const int & item);
-
+	void deleteNode(const int & item) const;
 private:
 	/***** Node class *****/
 	class BinNode
