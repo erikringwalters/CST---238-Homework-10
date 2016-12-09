@@ -43,4 +43,5 @@ int main()
 		if (number == -999) break;
 		intBST.deleteNode(number);
 	}
+	intBST.InOrder();
 }

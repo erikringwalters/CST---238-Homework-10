@@ -135,11 +135,15 @@ void BST::deleteNode(const int & item) const
 }
 
 //Definition of InOrder()
-void BST::InOrder()
+void BST::InOrder(BinNode * locptr)//in order is left->root->right
 {
-	BinNode *locptr = myRoot;
-	while (true)//gotta display and stuff
+	if (locptr->left != NULL)
 	{
-
+		InOrder(locptr->left);
+	}
+	cout << locptr->data << ", ";
+	if (locptr->right != NULL)
+	{
+		InOrder(locptr->right);
 	}
 }

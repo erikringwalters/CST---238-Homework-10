@@ -7,14 +7,7 @@ using namespace std;
 
 class BST
 {
-public:
-	/***** Function Members *****/
-	BST();
-	bool empty() const;
-	bool search(const int & item) const;
-	void insert(const int & item);
-	void deleteNode(const int & item) const;
-	void InOrder();
+
 private:
 	/***** Node class *****/
 	class BinNode
@@ -39,7 +32,14 @@ private:
 
 	  /***** Data Members *****/
 	BinNode * myRoot;
-
+public:
+	/***** Function Members *****/
+	BST();
+	bool empty() const;
+	bool search(const int & item) const;
+	void insert(const int & item);
+	void deleteNode(const int & item) const;
+	void InOrder(BinNode * locptr);
 }; // end of class declaration
 
 #endif
