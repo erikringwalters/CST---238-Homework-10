@@ -128,4 +128,5 @@ void BST::deleteNode(const int & item) const
 		locptr->data = twoChildrenPtr->data;
 		delete twoChildrenPtr;
 	}
+
 }
