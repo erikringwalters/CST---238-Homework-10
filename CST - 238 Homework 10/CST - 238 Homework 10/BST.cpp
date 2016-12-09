@@ -169,4 +169,5 @@ void BST::InOrder()
 {
 	BinNode *locptr = myRoot;
 	InOrder(locptr);
+
 }
