@@ -118,15 +118,28 @@ void BST::deleteNode(const int & item) const
 			parent->left = locptr->right;
 		}
 	}
-	else//two children
+	else if(locptr->left!=NULL && locptr ->right!=NULL)//two children
 	{
 		twoChildrenPtr = locptr->left;
-		while (twoChildrenPtr->right != NULL)
+		while (twoChildrenPtr->right != NULL)//look for rightmost leaf
 		{
-			twoChildrenPtr = twoChildrenPtr->right;
+			twoChildrenPtr = twoChildrenPtr->right;//move right until can't
 		}
 		locptr->data = twoChildrenPtr->data;
 		delete twoChildrenPtr;
 	}
+	else
+	{
+		cerr << "Could not find number you wanted to delete.\n";
+	}
+}
 
+//Definition of InOrder()
+void BST::InOrder()
+{
+	BinNode *locptr = myRoot;
+	while (true)//gotta display and stuff
+	{
+
+	}
 }

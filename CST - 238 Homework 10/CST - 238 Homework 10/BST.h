@@ -14,6 +14,7 @@ public:
 	bool search(const int & item) const;
 	void insert(const int & item);
 	void deleteNode(const int & item) const;
+	void InOrder();
 private:
 	/***** Node class *****/
 	class BinNode

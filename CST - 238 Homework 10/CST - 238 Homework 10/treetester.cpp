@@ -36,5 +36,11 @@ int main()
 		if (number == -999) break;
 		cout << (intBST.search(number) ? "Found" : "Not found") << endl;
 	}
-
+	for (;;)
+	{
+		cout << "Item to delete (-999 to stop): ";
+		cin >> number;
+		if (number == -999) break;
+		intBST.deleteNode(number);
+	}
 }
