@@ -65,5 +65,67 @@ void BST::insert(const int & item)
 //Definition of deleteNode()
 void BST::deleteNode(const int & item) const
 {
+	BinNode *locptr = myRoot;
+	BinNode * parent = myRoot;
+	BinNode * twoChildrenPtr = myRoot;
+	bool found = false;
 
+	while (!found && locptr != 0)
+	{
+		if (item < locptr->data)  {     // descend left
+			locptr = locptr->left;
+			parent = locptr;
+		}
+		else if (locptr->data < item) {  // descend right
+			locptr = locptr->right;
+			parent = locptr;
+		}
+		else                           // item found
+			found = true;
+	}
+	if (locptr->left == NULL && locptr->right == NULL)//no children
+	{
+		if (item < parent->data)//if left child
+		{
+			parent->left = NULL;//make left child NULL
+		}
+		if (item > parent->data)//if right child
+		{
+			parent->right = NULL;//make right child NULL
+		}
+		delete locptr;
+		return;
+	}
+	else if (locptr->left != NULL && locptr->right == NULL)//item has a left child only
+	{
+		if (item >= parent->data)//if item is a right child
+		{
+			parent->right = locptr->left;//assigns 
+		}
+		else //if item is a left child
+		{
+			parent->left = locptr->left;
+		}
+	}
+	else if (locptr->left == NULL && locptr->right != NULL)//item has a right child only
+	{
+		if (item >= parent->data)//if item is right child
+		{
+			parent->right = locptr->right;//assigns right child to item's child
+		}
+		else //if item is a left child
+		{
+			parent->left = locptr->right;
+		}
+	}
+	else//two children
+	{
+		twoChildrenPtr = locptr->left;
+		while (twoChildrenPtr->right != NULL)
+		{
+			twoChildrenPtr = twoChildrenPtr->right;
+		}
+		locptr->data = twoChildrenPtr->data;
+		delete twoChildrenPtr;
+	}
 }
