@@ -72,13 +72,13 @@ void BST::deleteNode(const int & item) const
 
 	while (!found && locptr != 0)
 	{
-		if (item < locptr->data)  {     // descend left
-			locptr = locptr->left;
+		if (item < locptr->data)  { // descend left
 			parent = locptr;
+			locptr = locptr->left;
 		}
 		else if (locptr->data < item) {  // descend right
-			locptr = locptr->right;
 			parent = locptr;
+			locptr = locptr->right;
 		}
 		else                           // item found
 			found = true;
@@ -93,7 +93,9 @@ void BST::deleteNode(const int & item) const
 		{
 			parent->right = NULL;//make right child NULL
 		}
+		locptr = NULL;
 		delete locptr;
+		cout << "cat\n";
 		return;
 	}
 	else if (locptr->left != NULL && locptr->right == NULL)//item has a left child only
@@ -106,6 +108,8 @@ void BST::deleteNode(const int & item) const
 		{
 			parent->left = locptr->left;
 		}
+		delete locptr;
+		return;
 	}
 	else if (locptr->left == NULL && locptr->right != NULL)//item has a right child only
 	{
@@ -117,6 +121,8 @@ void BST::deleteNode(const int & item) const
 		{
 			parent->left = locptr->right;
 		}
+		locptr;
+		return;
 	}
 	else if(locptr->left!=NULL && locptr ->right!=NULL)//two children
 	{
@@ -127,6 +133,8 @@ void BST::deleteNode(const int & item) const
 		}
 		locptr->data = twoChildrenPtr->data;
 		delete twoChildrenPtr;
+		delete locptr;
+		return;
 	}
 	else
 	{
@@ -141,9 +149,15 @@ void BST::InOrder(BinNode * locptr)//in order is left->root->right
 	{
 		InOrder(locptr->left);
 	}
-	cout << locptr->data << ", ";
+	cout << locptr->data << " ";
 	if (locptr->right != NULL)
 	{
 		InOrder(locptr->right);
 	}
+	return;
+}
+void BST::InOrder()
+{
+	BinNode *locptr = myRoot;
+	InOrder(locptr);
 }

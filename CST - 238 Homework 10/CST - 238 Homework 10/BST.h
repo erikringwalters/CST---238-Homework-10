@@ -32,6 +32,7 @@ private:
 
 	  /***** Data Members *****/
 	BinNode * myRoot;
+	
 public:
 	/***** Function Members *****/
 	BST();
@@ -40,6 +41,7 @@ public:
 	void insert(const int & item);
 	void deleteNode(const int & item) const;
 	void InOrder(BinNode * locptr);
+	void InOrder();
 }; // end of class declaration
 
 #endif
