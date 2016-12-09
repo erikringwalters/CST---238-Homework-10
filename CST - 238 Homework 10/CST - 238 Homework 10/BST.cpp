@@ -129,16 +129,25 @@ void BST::deleteNode(const int & item) const
 		twoChildrenPtr = locptr->left;
 		while (twoChildrenPtr->right != NULL)//look for rightmost leaf
 		{
+			parent = twoChildrenPtr;
 			twoChildrenPtr = twoChildrenPtr->right;//move right until can't
 		}
 		locptr->data = twoChildrenPtr->data;
-		delete twoChildrenPtr;
-		delete locptr;
+		if (parent->left == twoChildrenPtr)//if the replacer value is a left child
+		{
+			parent->left == NULL;
+		}
+		else if (parent->right == twoChildrenPtr)
+		{
+			parent->right == NULL;
+		}
+		//delete means realeasing the memory, i'm pretty sure. I suppose in theory if something's still pointing there it still exists, but idk man.
 		return;
 	}
 	else
 	{
 		cerr << "Could not find number you wanted to delete.\n";
+		return;
 	}
 }
 
